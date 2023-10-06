@@ -22,12 +22,14 @@ const initialStateTodos = [
 const App = () => {
   const [todos, setTodos] = useState(initialStateTodos);
 
- 
+ const addTodo= todo => {
+  setTodos([...todos, todo])
+ }
 
   return (
-    <div className="container">
-      <h1>Formularios</h1>
-      <Formulario/>
+    <div className="container mb-2">
+      <h1 className="my-5">Formularios</h1>
+      <Formulario addTodo={addTodo}/>
       <Todos todos={todos} />
     </div>
   );

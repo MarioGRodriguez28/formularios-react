@@ -1,9 +1,8 @@
 import {useState} from "react";
 import Swal from "sweetalert2";
 
-
-const Formulario = () => {
- 
+const Formulario = ({addTodo}) => {
+    const [error, setError] = useState("");
   const [toDo, setToDo] = useState({
     title: "ToDo 2",
     description: "Descrption 2",
@@ -12,21 +11,31 @@ const Formulario = () => {
   });
 const{title, description, state, priority} = toDo
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log(title, description, state);
-  if (!title.trim() || !description.trim()) {
-      console.log("Datos incompletos");
-      Swal.fire({
-          title: "Error!",
-          text: "Título y descripción son obligatorios",
-          icon: "error",
-      });
-      return;
-  }
- 
-  
-};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(title, description, state);
+    if (!title.trim() || !description.trim()) {
+        console.log("Datos incompletos");
+        Swal.fire({
+            title: "Error!",
+            text: "Título y descripción son obligatorios",
+            icon: "error",
+        });
+        return;
+    }
+    addTodo({
+      id: Date.now(),
+      ...toDo,
+      state: state === "completado",
+  });
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Todo Creado',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  };
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -76,7 +85,7 @@ const handleSubmit = (e) => {
       <button type="submit" className="btn btn-primary">
         Procesar
       </button>
-     
+      {error != "" && error}
     </form>
   );
 };
