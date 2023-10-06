@@ -1,7 +1,9 @@
 import {useState} from "react";
+import Swal from "sweetalert2";
+
 
 const Formulario = () => {
-    const [error, setError] = useState("");
+ 
   const [toDo, setToDo] = useState({
     title: "ToDo 2",
     description: "Descrption 2",
@@ -10,15 +12,21 @@ const Formulario = () => {
   });
 const{title, description, state, priority} = toDo
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setError(""); //--> reinicia el error
-    console.log(title, description, state);
-    
-    //validar los datos
-    if (!title.trim() || !description.trim() || !state.trim())
-      return setError("llena este campo");
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log(title, description, state);
+  if (!title.trim() || !description.trim()) {
+      console.log("Datos incompletos");
+      Swal.fire({
+          title: "Error!",
+          text: "Título y descripción son obligatorios",
+          icon: "error",
+      });
+      return;
+  }
+ 
+  
+};
 
   const handleChange = (e) => {
     const { name, type, checked, value } = e.target;
@@ -68,7 +76,7 @@ const{title, description, state, priority} = toDo
       <button type="submit" className="btn btn-primary">
         Procesar
       </button>
-      {error != "" && error}
+     
     </form>
   );
 };
