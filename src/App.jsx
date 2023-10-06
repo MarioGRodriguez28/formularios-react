@@ -1,5 +1,5 @@
 
-import Controlado from "./components/Controlado";
+import Formulario from "./components/Formulario";
 
 
 const App = () => {
@@ -7,7 +7,7 @@ const App = () => {
   <div className="container">
   <h1>Formularios</h1>
    
-    <Controlado/>
+    <Formulario/>
     
   </div>
   )

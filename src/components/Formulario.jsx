@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const Controlado = () => {
+const Formulario = () => {
     const [error, setError] = useState("");
   const [toDo, setToDo] = useState({
     title: "ToDo 2",
@@ -73,4 +73,4 @@ const{title, description, state, priority} = toDo
   );
 };
 
-export default Controlado;
+export default Formulario;
