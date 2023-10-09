@@ -7,7 +7,7 @@ const Formulario = ({addTodo}) => {
     title: "ToDo 2",
     description: "Description 2",
     state: "pendiente",
-    priority: true
+    priority: false
   });
 const{title, description, state, priority} = toDo
 
@@ -84,7 +84,7 @@ const{title, description, state, priority} = toDo
         <option value="completado">Completado</option>
       </select>
       <button type="submit" className="btn btn-primary">
-        Procesar
+        Agregar To Do
       </button>
       {error != "" && error}
     </form>
