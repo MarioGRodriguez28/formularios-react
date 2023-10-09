@@ -1,20 +1,14 @@
 import Todo from "./Todo";
 
-const Todos = ({ todos }) => {
+const Todos = ({todos, deleteTodo}) => {
   return (
     <>
-      <h2 className="my-5">Todos</h2>
+      <h2 className="my-5 text-center">Todos</h2>
       <ul className="list-group">
         {todos.map((todo) => (
-          <Todo key={todo.id} todo={todo}/>
-          
-/*           
-            <h3>{todo.title}</h3>
-            <p>{todo.description}</p>
-            <p>{todo.state ? "Completado" : "Pendiente"}</p>
-            <p>{todo.priority ? "Prioridad" : "Sin prioridad"}</p>
-         */
+          <Todo key={todo.id} todo={todo} deleteTodo={deleteTodo} />
         ))}
+        {todos.length === 0 &&  <li className="list-group-item text-center">Sin To Do</li>}
       </ul>
     </>
   );
