@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Formulario from "./components/Formulario";
-import Todos from "./ToDos";
+import Todos from "./components/Todos";
 
 const initialStateTodos = [
   {

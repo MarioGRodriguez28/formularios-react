@@ -5,7 +5,7 @@ const Formulario = ({addTodo}) => {
     const [error, setError] = useState("");
   const [toDo, setToDo] = useState({
     title: "ToDo 2",
-    description: "Descrption 2",
+    description: "Description 2",
     state: "pendiente",
     priority: true
   });
@@ -43,6 +43,7 @@ const{title, description, state, priority} = toDo
       ...toDo,
       [name]: type === 'checkbox' ? checked : value
     });
+    setError("");
   };
   
   return (
